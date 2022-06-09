@@ -1,0 +1,33 @@
+auth:
+- auth_name: default
+  auth_type: signed_headers
+- auth_name: new_default
+  auth_type: signed_headers
+base_image: ubuntu_18_04_proxy_python_3_8
+meta:
+  author: Abhijith Swamy Miriyala
+  author_email: abhijith@oblivious.ai
+  git: https://github.com/AutomationLife/REST-tutorial.git
+  version: 0.0.1
+paths:
+- access: admin
+  path: /todo/api/v1.0/tasks
+  short_description: main API
+- access: querier
+  path: /todo/api/v1.0/tasks/<int:task_id>
+  short_description: query the data
+roles:
+- role_auth: default
+  role_cardinality: 1
+  role_description: Administrator
+  role_name: admin
+- role_auth: new_default
+  role_cardinality: 1
+  role_description: who can query apis
+  role_name: querier
+traffic:
+  inbound:
+  - name: port
+    port: 5000
+    type: tcp
+  outbound: []
