@@ -21,10 +21,6 @@ roles:
   role_cardinality: 1
   role_description: Administrator
   role_name: admin
-- role_auth: new_default
-  role_cardinality: 1
-  role_description: who can query apis
-  role_name: querier
 traffic:
   inbound:
   - name: port
